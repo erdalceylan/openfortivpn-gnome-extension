@@ -1,6 +1,6 @@
 # OpenFortiVPN Custom GUI (GNOME Shell Extension)
 
-GNOME Masaüstü ortamı (Ubuntu 24.04/26.04, GNOME 45 - 50+) için özel olarak geliştirilmiş **OpenFortiVPN** eklentisidir.
+GNOME Masaüstü ortamı (Ubuntu 26.04, GNOME 50) için özel olarak geliştirilmiş **OpenFortiVPN** eklentisidir.
 
 Bu eklenti, Fortinet SSL-VPN bağlantılarınızı üst bar üzerinden yönetmenizi sağlar. SMS / OTP (Two-Factor Authentication) doğrulama kodlarını doğrudan GNOME arabiriminde yakalar, anlık canlı terminal loglarını gösterir ve şifresiz geçiş altyapısı sunar.
 
@@ -34,4 +34,4 @@ Projeyi klonlayıp kurulum betiğini `sudo` yetkisiyle çalıştırmanız yeterl
 ```bash
 git clone [https://github.com/erdalceylan/openfortivpn-gnome-extension.git](https://github.com/erdalceylan/openfortivpn-gnome-extension.git)
 cd openfortivpn-gnome-extension
-sudo bash install-uninstall.sh install
+sudo bash openfortivpn-custom-gui-install-uninstall.sh install
