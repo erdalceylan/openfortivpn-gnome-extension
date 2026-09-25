@@ -207,7 +207,6 @@ export default class OpenFortiVpnExtension extends Extension {
                 }
                 this._icon.set_icon_name('network-vpn-symbolic');
                 this._icon.set_style('opacity: 1.0; color: #3fb950;');
-                Main.notify('OpenFortiVPN', 'VPN Başarıyla Bağlandı! 🔒');
                 return GLib.SOURCE_REMOVE;
             });
         }
@@ -226,14 +225,13 @@ export default class OpenFortiVpnExtension extends Extension {
             });
 
             this._vpnProcess = launcher.spawnv([
-                'stdbuf', '-oL', '-eL', 'sudo', 'openfortivpn', '-c', configPath, '-v'
+                'stdbuf', '-oL', '-eL', 'sudo', 'openfortivpn', '-c', configPath
             ]);
 
             this._stdinStream = this._vpnProcess.get_stdin_pipe();
             let stdoutPipe = this._vpnProcess.get_stdout_pipe();
 
             this._appendRawText('[+] VPN başlatılıyor...\n');
-            Main.notify('OpenFortiVPN', 'Sunucuya bağlanılıyor...');
 
             this._readChunks(stdoutPipe);
 
@@ -250,7 +248,6 @@ export default class OpenFortiVpnExtension extends Extension {
             let bytes = new GLib.Bytes(code + '\n');
             this._stdinStream.write_bytes_async(bytes, GLib.PRIORITY_DEFAULT, null, null);
             this._appendRawText('\n[>] OTP Gönderildi: ' + code + '\n');
-            Main.notify('OpenFortiVPN', 'OTP kodu gönderildi...');
             this._otpEntry.set_text('');
         }
     }
